@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Resources</h1>
+<form method="get" style="margin:1rem 0;">
+  <select name="type">
+    <option value="">All types</option>
+    {% for val,label in types.items %}
+      <option value="{{ val }}" {% if qtype == val %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+  <button>Filter</button>
+</form>
+<ul>
+  {% for r in resources %}
+    <li><strong>[{{ r.get_type_display }}]</strong> {{ r.title }} — {{ r.published_at }}<br>{{ r.summary|truncatechars:160 }} {% if r.link %}<a href="{{ r.link }}" target="_blank">Open</a>{% endif %}</li>
+  {% empty %}
+    <li>No resources yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

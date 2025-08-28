@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Network</h1>
+<ul>
+    {% for c in companies %}
+        <li><a href="{{ c.website }}" target="_blank">{{ c.name }}</a> — {{ c.country }}</li>
+  {% empty %}
+    <li>No companies yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

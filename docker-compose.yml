@@ -1,0 +1,43 @@
+services:
+  web:
+    build: .
+    container_name: energy_web
+    env_file: .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+
+  db:
+    image: postgres:15
+    container_name: energy_db
+    restart: always
+    environment:
+      POSTGRES_DB: energy_investors
+      POSTGRES_USER: energy_user
+      POSTGRES_PASSWORD: energy_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: sushmavankhede24@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: Admin@123
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:

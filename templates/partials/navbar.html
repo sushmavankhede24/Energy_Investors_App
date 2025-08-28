@@ -1,0 +1,28 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);">
+  <div class="container">
+    <!-- Logo and Brand -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <img src="{% static 'images/logo1.jpg' %}" alt="Sun Energy Investors" class="me-2" style="height:50px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.3);">
+      <span class="fw-bold text-white">Sun Energy Investors</span>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/network/">Network</a></li>
+        <li class="nav-item"><a class="nav-link" href="/bizzboard/">JobBoard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/events/">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="/resources/">Resources</a></li>
+        <li class="nav-item"><a class="nav-link" href="/consultancy/">Consultancy</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Welcome to EnergyInvestors</h1>
+    <p class="lead">Connect, explore, and invest in the future of energy projects.</p>
+    <a href="{% url 'opportunity_list' %}" class="btn btn-primary btn-lg mt-3">Explore Opportunities</a>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <i class="bi bi-lightning-charge display-4 text-primary"></i>
+          <h5 class="card-title mt-3">Renewable Projects</h5>
+          <p class="card-text">Discover investment opportunities in solar, wind, and hydro energy.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <i class="bi bi-people display-4 text-success"></i>
+          <h5 class="card-title mt-3">Network with Experts</h5>
+          <p class="card-text">Connect with industry professionals and energy companies worldwide.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body text-center">
+          <i class="bi bi-graph-up display-4 text-warning"></i>
+          <h5 class="card-title mt-3">Track Investments</h5>
+          <p class="card-text">Monitor your investments and stay updated on project progress.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Upcoming Events</h1>
+<ul>
+  {% for e in events %}
+    <li>
+      <strong>{{ e.title }}</strong> — {{ e.start_date }}{% if e.end_date %} to {{ e.end_date }}{% endif %} — {{ e.location }}
+      {% if e.registration_url %}<div><a href="{{ e.registration_url }}" target="_blank">Register</a></div>{% endif %}
+    </li>
+  {% empty %}
+    <li>No events yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
