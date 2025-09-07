@@ -99,11 +99,6 @@ DATABASES = {
         "PORT": os.environ.get("SQL_PORT"),
     }
 }
-
-
-print(os.environ.get("SQL_DATABASE"))
-print(os.environ.get("SQL_HOST"))
-print(os.environ.get("SQL_USER"))
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
