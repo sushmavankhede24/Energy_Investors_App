@@ -14,6 +14,20 @@ class Resource(models.Model):
     summary = models.TextField(blank=True)
     link = models.URLField(blank=True)
     published_at = models.DateField(null=True)
+
+    def get_embed_url(self):
+        if not self.link:
+            return ""
+    
+        if "watch?v=" in self.link:
+            video_id = self.link.split("watch?v=")[-1].split("&")[0]
+            return f"https://www.youtube.com/embed/{video_id}"
+    
+        if "youtu.be/" in self.link:
+            video_id = self.link.split("youtu.be/")[-1]
+            return f"https://www.youtube.com/embed/{video_id}"
+    
+        return self.link
     
     class Meta:
         ordering = ["-published_at", "title"]
