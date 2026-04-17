@@ -1,23 +1,22 @@
 {% extends "base.html" %}
-{% block content %}
 {% load static %}
+{% block content %}
 
 <style>
   /* Hero Carousel Images */
   #heroCarousel .carousel-item img {
     width: 100%;
-    max-height: 500px; /* desktop height */
+    max-height: 500px;
     object-fit: cover;
   }
 
-  /* Responsive carousel for tablets/mobiles */
   @media (max-width: 768px) {
     #heroCarousel .carousel-item img {
       max-height: 300px;
     }
   }
 
-  /* Carousel overlay */
+  /* Overlay */
   .hero-overlay {
     position: absolute;
     top: 0;
@@ -34,13 +33,15 @@
     padding: 1rem;
   }
 
-  /* Card hover effects */
+  /* Cards */
   .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
   }
+
   .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   }
 
   /* Icon circle */
@@ -53,55 +54,89 @@
     border-radius: 50%;
     background: #f8f9fa;
   }
+
+  /* Gold accents */
+  .text-gold {
+    color: #d4af37;
+  }
 </style>
 
-<!-- Full-width Hero Carousel -->
+<!-- HERO CAROUSEL -->
 <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
-  <!-- Indicators -->
+
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
   </div>
 
-  <!-- Slides -->
   <div class="carousel-inner">
+    
     <div class="carousel-item active">
-      <img src="{% static 'images/e1.jpg' %}" alt="Solar energy project">
+      <img src="{% static 'images/c1.jpg' %}" alt="Solar energy project">
       <div class="hero-overlay">
         <h1 class="display-4 fw-bold">Welcome to EnergyInvestors</h1>
         <p class="lead">Connect, explore, and invest in the future of energy projects.</p>
-        <a href="{% url 'opportunity_list' %}" class="btn btn-primary btn-lg mt-3 shadow">Explore Opportunities</a>
+        <a href="{% url 'opportunity_list' %}" class="btn btn-warning btn-lg mt-3 shadow">Explore Opportunities</a>
       </div>
     </div>
+
     <div class="carousel-item">
-      <img src="{% static 'images/e5.jpg' %}" alt="Wind turbines">
+      <img src="{% static 'images/c2.jpg' %}" alt="Wind turbines">
       <div class="hero-overlay">
         <h1 class="display-4 fw-bold">Clean Energy Matters</h1>
         <p class="lead">Be part of the renewable revolution shaping tomorrow.</p>
       </div>
     </div>
+
     <div class="carousel-item">
-      <img src="{% static 'images/e2.jpg' %}" alt="Hydro power plant">
+      <img src="{% static 'images/c3.jpg' %}" alt="Hydro power plant">
       <div class="hero-overlay">
         <h1 class="display-4 fw-bold">Smart Investments</h1>
         <p class="lead">Track, grow, and diversify your energy portfolio.</p>
       </div>
     </div>
+
   </div>
 
-  <!-- Controls -->
   <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+    <span class="carousel-control-prev-icon"></span>
   </button>
+
   <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+    <span class="carousel-control-next-icon"></span>
   </button>
+
 </div>
 
-<!-- Why Choose Section -->
+<!-- 📊 STATISTICS SECTION -->
+<div class="container my-5">
+  <div class="row text-center">
+
+    <div class="col-md-3">
+      <h2 class="fw-bold text-gold">500+</h2>
+      <p class="text-muted">Active Investors</p>
+    </div>
+
+    <div class="col-md-3">
+      <h2 class="fw-bold text-gold">120+</h2>
+      <p class="text-muted">Energy Projects</p>
+    </div>
+
+    <div class="col-md-3">
+      <h2 class="fw-bold text-gold">€50M+</h2>
+      <p class="text-muted">Funds Raised</p>
+    </div>
+
+    <div class="col-md-3">
+      <h2 class="fw-bold text-gold">98%</h2>
+      <p class="text-muted">Success Rate</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHY CHOOSE SECTION -->
 <div class="container my-5">
   <div class="text-center mb-5">
     <h2 class="fw-bold">Why Choose EnergyInvestors?</h2>
@@ -109,34 +144,53 @@
   </div>
 
   <div class="row g-4">
+
+    <!-- Renewable Projects -->
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 text-center p-4">
-        <div class="icon-circle text-primary mb-3">
-          <i class="bi bi-lightning-charge fs-2"></i>
+      <a href="{% url 'opportunity_list' %}" class="text-decoration-none text-dark">
+        <div class="card shadow-sm h-100 text-center p-4">
+          <div class="icon-circle text-warning mb-3">
+            <i class="bi bi-lightning-charge fs-2"></i>
+          </div>
+          <h5 class="card-title">Renewable Projects</h5>
+          <p class="card-text">Discover opportunities in solar, wind, and hydro energy.</p>
         </div>
-        <h5 class="card-title">Renewable Projects</h5>
-        <p class="card-text">Discover opportunities in solar, wind, and hydro energy with high growth potential.</p>
-      </div>
+      </a>
     </div>
+
+    <!-- Network -->
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 text-center p-4">
-        <div class="icon-circle text-success mb-3">
-          <i class="bi bi-people fs-2"></i>
+      <a href="/network/" class="text-decoration-none text-dark">
+        <div class="card shadow-sm h-100 text-center p-4">
+          <div class="icon-circle text-warning mb-3">
+            <i class="bi bi-people fs-2"></i>
+          </div>
+          <h5 class="card-title">Network with Experts</h5>
+          <p class="card-text">Connect with global industry professionals.</p>
         </div>
-        <h5 class="card-title">Network with Experts</h5>
-        <p class="card-text">Connect with global industry professionals and leading energy companies.</p>
-      </div>
+      </a>
     </div>
+
+    <!-- Dashboard -->
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 text-center p-4">
-        <div class="icon-circle text-warning mb-3">
-          <i class="bi bi-graph-up fs-2"></i>
+      <a href="/dashboard/" class="text-decoration-none text-dark">
+        <div class="card shadow-sm h-100 text-center p-4">
+          <div class="icon-circle text-warning mb-3">
+            <i class="bi bi-graph-up fs-2"></i>
+          </div>
+          <h5 class="card-title">Track Investments</h5>
+          <p class="card-text">Monitor and grow your investment portfolio.</p>
         </div>
-        <h5 class="card-title">Track Investments</h5>
-        <p class="card-text">Monitor your investments and stay updated with real-time project progress.</p>
-      </div>
+      </a>
     </div>
+
   </div>
+</div>
+
+<!-- TRUST SECTION -->
+<div class="text-center my-5">
+  <h4 class="fw-bold">Trusted by Global Energy Leaders</h4>
+  <p class="text-muted">Partnering with top renewable companies worldwide</p>
 </div>
 
 {% endblock %}
