@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get("SECRET_KEY") or config("SECRET_KEY", default="dev-secret-key")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 
 ALLOWED_HOSTS = ['*']
@@ -89,7 +89,15 @@ WSGI_APPLICATION = 'energy_investors.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if os.environ.get("SQL_DATABASE"):
+if os.environ.get("GITHUB_ACTIONS"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
+elif os.environ.get("SQL_DATABASE"):
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -100,18 +108,14 @@ if os.environ.get("SQL_DATABASE"):
             "PORT": os.environ.get("SQL_PORT"),
         }
     }
+
 else:
-    # CI / fallback
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-
-
-
-
 
 
 # DATABASES = {
